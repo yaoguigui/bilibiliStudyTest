@@ -10,6 +10,8 @@ const index = () => import('../components/index.vue')
 const hello = () => import('../components/HelloWorld.vue')
 const myperson = () => import('../components/Myperson.vue')
 const myset = () => import('../components/MySet.vue')
+const name = () => import('../components/Name.vue')
+const news = () => import('../components/News.vue')
 
 const router = new vueRouter({
 	routes: [
@@ -19,7 +21,9 @@ const router = new vueRouter({
     { path: "/myset", component: myset, children: [{
         path: "name",
         component: name
-
+    },{
+        path:"news",
+        component: news
     }]}
 	]
 })

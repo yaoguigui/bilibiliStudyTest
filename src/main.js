@@ -14,6 +14,10 @@ Vue.config.productionTip = false;
 
 import router from './router';
 
+Vue.prototype.test = function() {
+	console.log("执行了自定义的 Vue 类方法")
+}
+
 new Vue({
   render: h => h(App),
   router,

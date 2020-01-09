@@ -4,12 +4,17 @@
 
     <img alt="Vue logo" src="./assets/logo.png">
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <router-view/>
 
+    <!-- 路由跳转，组件不会被销毁 -->
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
+    <!-- <router-view/> -->
     
     <van-tabbar v-model="active">
-      <van-tabbar-item icon="like" to="/">首页</van-tabbar-item>
-      <van-tabbar-item icon="closed-eye" to="/hello?msg=HelloWorld">哈喽</van-tabbar-item>
+      <van-tabbar-item name="index" icon="like" to="/">首页</van-tabbar-item>
+      <!-- <van-tabbar-item icon="closed-eye" to="/hello?msg=HelloWorld">哈喽</van-tabbar-item> -->
+      <van-tabbar-item :icon="active==1?'circle':'closed-eye'" :to="{ path: '/hello', query: { msg:'HelloQuery'}}" :my-data=active>哈喽</van-tabbar-item>
       <van-tabbar-item icon="user-circle-o" to="/myperson/id321">个人中心</van-tabbar-item>
       <van-tabbar-item icon="setting-o" to="/myset">设置</van-tabbar-item>
     </van-tabbar>
@@ -21,14 +26,13 @@
 
 <script>
 import Header from './components/Header.vue'
-import Vue from 'vue'
 
 export default {
   name: 'app',
   data(){
     return {
-      active: 3,
-      activeName: "c"
+      active: 1 ,
+      activeName: "index"
     }
   },
   components: {
